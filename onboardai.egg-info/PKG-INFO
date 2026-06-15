@@ -1,0 +1,189 @@
+Metadata-Version: 2.4
+Name: onboardai
+Version: 0.1.0
+Summary: An AI-powered onboarding intelligence layer on top of Graphify for MCP
+Author-email: Your Name <your.email@example.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.100.0
+Requires-Dist: uvicorn>=0.20.0
+Requires-Dist: mcp>=1.0.0
+Requires-Dist: networkx>=3.0
+Requires-Dist: pydantic>=2.0
+
+# OnboardAI: AI-Powered Onboarding Intelligence Layer
+
+![OnboardAI Use Case & Features](/C:/Users/RohitAnish/.gemini/antigravity/brain/9d4ee102-a356-4df9-9cb4-367ee82337e8/onboard_ai_infographic_1781504940514.png)
+
+OnboardAI is a developer onboarding intelligence system that integrates with Claude Code and other MCP-compatible clients. It is designed to dramatically reduce the time it takes a new developer, intern, or employee to understand a codebase by converting raw repository data and Graphify knowledge graphs into interactive, onboarding-oriented insights.
+
+---
+
+## 1. Vision & Architecture
+
+Rather than generating raw repository diagrams or acting as another codebase crawler, OnboardAI acts as a **structured guidance layer** on top of Graphify. It parses Graphify’s extraction data, maps relationships with NetworkX, groups code modules by directory structure, and answers questions relative to what tasks a developer has been assigned.
+
+### Core Architecture Flow
+
+```mermaid
+flowchart TD
+    subgraph Client Layer
+        ClaudeCode[Claude Code / MCP Client]
+    end
+
+    subgraph OnboardAI MCP Server
+        Server[FastMCP Server]
+        Scanner[Project Scanner & Tech Detector]
+        Adapter[Graphify Adapter]
+        Roadmap[Roadmap Generator]
+        QA[Q&A & Context Engine]
+        Viz[Mermaid Visualizer]
+    end
+
+    subgraph Intelligence Engine
+        Graphify[Graphify extraction]
+        NX[NetworkX Directed Graph]
+    end
+
+    ClaudeCode <-->|JSON-RPC via Stdio/SSE| Server
+    Server <--> Scanner
+    Server <--> Adapter
+    Adapter <-->|Reads graphify-out/| Graphify
+    Adapter <-->|Builds| NX
+    Roadmap <--> Adapter
+    QA <--> Adapter
+    Viz <--> Adapter
+```
+
+---
+
+## 2. Directory Layout & Components
+
+Here is the file structure of the OnboardAI project:
+
+```text
+OnboardAI/
+├── .graphifyignore        # Ignore rules to bypass LLM extraction for non-code files
+├── requirements.txt       # Project dependencies (FastAPI, uvicorn, mcp, networkx)
+├── main.py                # Launcher: starts MCP server in stdio or sse mode
+├── test_integration.py    # Offline self-check verification test script
+├── test_client.py         # Standard python MCP client session simulation script
+├── scanner/
+│   ├── __init__.py
+│   ├── project_scanner.py     # Counts files and crawls folders
+│   └── architecture_detector.py # Detects tech stacks (FastAPI, React, etc.)
+├── knowledge/
+│   ├── __init__.py
+│   ├── graphify_adapter.py    # Integrates Graphify output and builds NetworkX graphs
+│   ├── onboarding_plan.py     # Generates day-by-day study paths
+│   ├── repository_inventory.py# Structured module/class/function catalogs
+│   └── qa_assistant.py        # Performs graph-based Q&A and task instructions
+└── graph/
+    ├── __init__.py
+    └── graph_generator.py     # Generates Mermaid mindmaps, dependencies, and call-flows
+```
+
+---
+
+## 3. How Each Feature Works & How It's Built
+
+### Feature 1: Repository Scan & Graph Integration
+- **How it's built**: Implemented in `scanner/project_scanner.py` and `scanner/architecture_detector.py`. 
+- **How it works**: Walks the codebase directories (excluding noise like `.git`, `node_modules`, and virtual environments). It looks for configuration signatures (e.g. `package.json`, `requirements.txt`, `manage.py`, `Dockerfile`) and extracts details.
+- **Graphify Integration**: Located in `knowledge/graphify_adapter.py`. If `graphify-out/graph.json` is missing, the adapter automatically invokes `python -m graphify extract <repo_path>` via a subprocess to bootstrap the graph. It then builds a `networkx.DiGraph` to represent the entities and relationships.
+
+### Feature 2: Dependency-Aware Learning Roadmap
+- **How it's built**: Implemented in `knowledge/onboarding_plan.py`.
+- **How it works**: Groups files using Graphify’s community detection. It builds a directed graph of community dependencies (if Community A calls/imports elements in Community B, then B is foundational to A). It uses **topological sorting** (or sorting by in/out-degree ratios) to order the learning path:
+  - **Day 1**: Environment setup, tech summary, configs.
+  - **Day 2**: Foundational modules (utilities, schemas, database clients).
+  - **Day 3**: Mid-level business logic.
+  - **Day 4**: API controllers, routers, and entry points.
+  - **Day 5**: Automated tests and first contribution.
+
+### Feature 3: Mindmap & Dependency Visualization
+- **How it's built**: Implemented in `graph/graph_generator.py`.
+- **How it works**: Traversing the NetworkX graph, it extracts relationships and formats them directly into **Mermaid syntax**:
+  - `generate_mindmap()`: Creates a Mermaid `mindmap` showing high-level folders and key classes.
+  - `generate_call_flow()`: Creates a flow diagram (`flowchart TD`) of method-to-method calls.
+  - `generate_dependency_graph()`: Creates an import diagram (`flowchart LR`) of module dependencies.
+
+### Feature 4: Interactive Q&A & Task-Context Overlays
+- **How it's built**: Implemented in `knowledge/qa_assistant.py`.
+- **How it works**: Uses regex and keywords to search the graph. If a query matches a module (e.g. `ProjectScanner`), it generates a structured analysis of the component: *Purpose, Responsibilities, Methods, Dependencies,* and *Callers*.
+- **Task-Context Overlays**: If the client provides a `work_context` string (e.g., *"I need to implement a visualizer"*), the Q&A assistant searches for components associated with those keywords in the graph and appends tailored, step-by-step developer instructions.
+
+---
+
+## 4. MCP Server & Protocols
+
+The MCP Server is implemented in `mcp_server/server.py` using the high-level **FastMCP SDK**. This enables automatic tool schemas, JSON-RPC communication, and transport selection.
+
+It exposes **10 tools** to any connected client:
+1. `analyze_repository(repo_path)`: High-level tech stack and file count summary.
+2. `generate_onboarding_plan(repo_path, role, team, target_module)`: Customized daily learning roadmap.
+3. `explain_project(repo_path)`: Basic codebase summary.
+4. `explain_module(repo_path, module_name)`: Full signature and relationship breakout for a module.
+5. `list_modules(repo_path)`: Direct directory list of files and components.
+6. `search_repository(repo_path, query)`: Search symbols/descriptions in the codebase.
+7. `get_architecture(repo_path, visualization_type)`: Generates Mermaid charts.
+8. `get_learning_path(repo_path)`: Retrieves recommended files to read first.
+9. `get_dependencies(repo_path)`: Returns internal couplings and external dependencies.
+10. `ask_repository_question(repo_path, question, work_context)`: Q&A helper with custom action items.
+
+---
+
+## 5. Setup & Integration Guide
+
+### Local Verification
+Verify the server runs successfully on your machine by running the test client session simulation:
+```powershell
+$env:PYTHONIOENCODING="utf-8"
+python test_client.py
+```
+This script acts as a local client session, connects to the server, retrieves the tools list, and invokes them locally.
+
+### Integrating with Claude Code
+To register the server with the **Claude Code CLI**, run:
+```powershell
+claude mcp add onboard-ai python "C:\Users\RohitAnish\.gemini\antigravity\scratch\OnboardAI\main.py"
+```
+
+Once registered, launch Claude Code:
+```powershell
+claude
+```
+
+### Integrating with Claude Desktop
+To integrate with the **Claude Desktop App**, open your desktop configuration file:
+- **Path**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **Configuration**:
+  ```json
+  {
+    "mcpServers": {
+      "onboard-ai": {
+        "command": "python",
+        "args": [
+          "C:/Users/RohitAnish/.gemini/antigravity/scratch/OnboardAI/main.py"
+        ]
+      }
+    }
+  }
+  ```
+
+---
+
+## 6. How to Ask Questions
+
+Once integrated into Claude, the model will automatically pick the right tool based on your natural language prompt. Here are some examples:
+
+| Question you ask Claude | Tool Claude calls under the hood |
+| :--- | :--- |
+| **"How should I learn this project?"** | `generate_onboarding_plan` |
+| **"Explain the module ProjectScanner"** | `explain_module` |
+| **"Which components are critical to look at?"** | `get_learning_path` |
+| **"Show me the dependency mindmap"** | `get_architecture(visualization_type='mindmap')` |
+| **"How does the project work? I am going to work on the visualizer."** | `ask_repository_question(work_context='visualizer')` |
