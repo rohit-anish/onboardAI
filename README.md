@@ -1,6 +1,6 @@
 # OnboardAI: AI-Powered Onboarding Intelligence Layer
 
-![OnboardAI Use Case & Features](/"website/assets/onboard_ai_infographic.webp")
+![OnboardAI Use Case & Features](website/assets/onboard_ai_infographic.webp)
 
 OnboardAI is a developer onboarding intelligence system that integrates with Claude Code and other MCP-compatible clients. It is designed to dramatically reduce the time it takes a new developer, intern, or employee to understand a codebase by converting raw repository data and Graphify knowledge graphs into interactive, onboarding-oriented insights.
 
