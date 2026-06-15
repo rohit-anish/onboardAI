@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "onboardai"
-version = "0.1.0"
+version = "0.1.2" # Changed from 0.1.1
 authors = [
-    { name = "Your Name", email = "your.email@example.com" }
+    { name = "ROHIT ANISH", email = "rohit.anish2025@vitstudent.ac.in" }
 ]
 description = "An AI-powered onboarding intelligence layer on top of Graphify for MCP"
 readme = "README.md"
