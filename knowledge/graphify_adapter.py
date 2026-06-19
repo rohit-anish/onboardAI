@@ -30,19 +30,24 @@ class GraphifyAdapter:
         try:
             # Run the command using the Python executable
             cmd = [sys.executable, "-m", "graphify", "extract", str(self.repo_path)]
-            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            # Add timeout to prevent hangs
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True, timeout=120)
             print(result.stdout, file=sys.stderr)
             
             # If analysis file wasn't written (e.g. no-cluster defaulted or LLM skipped),
             # trigger cluster-only to name communities and build cohesion metrics.
             if not self.analysis_path.exists():
                 cluster_cmd = [sys.executable, "-m", "graphify", "cluster-only", str(self.repo_path)]
-                subprocess.run(cluster_cmd, capture_output=True, text=True)
+                subprocess.run(cluster_cmd, capture_output=True, text=True, timeout=60)
                 
             return self.graph_path.exists()
+        except subprocess.TimeoutExpired as e:
+            print(f"Failed to generate graph: Graphify extraction timed out: {e}", file=sys.stderr)
+            return False
         except Exception as e:
             print(f"Failed to generate graph: {e}", file=sys.stderr)
             return False
+
 
     def load_graph(self, auto_generate: bool = True) -> bool:
         """
