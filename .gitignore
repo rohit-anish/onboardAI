@@ -1,85 +1,50 @@
-# Python bytecode
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Virtual environments
-.env
 .venv/
 venv/
-env/
-
-# Distribution / packaging
-build/
+__pycache__/
+# Build & Distribution
 dist/
+build/
 *.egg-info/
-.eggs/
 *.egg
 *.whl
+.claude/
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Python cache
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+ENV/
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-
-# Jupyter notebooks
-.ipynb_checkpoints/
-
-# Visual Studio Code
+# IDE & Editor
 .vscode/
-
-# IDEs and editors
 .idea/
-*.sublime-project
-*.sublime-workspace
-
-# Type checkers
-.mypy_cache/
-.pyre/
-.pytype/
-
-# Logs and runtime files
-*.log
-*.pot
-*.mo
-
-# OS files
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
 
-# Generated project outputs
+# Graphify (large knowledge graphs - regenerate as needed)
 graphify-out/
+graphify-cache/
 
-# Local environment files
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Node modules (for website folder)
+node_modules/
+npm-debug.log
+
+# OS
+.env
 .env.local
-.env.*.local
+*.log
 
 # Temporary files
 *.tmp
-*.temp
-*~
-
-# SQLite database
-*.db
-
-# Coverage / profiling
-.prof
-
-# Notebook checkpoints
-.ipynb_checkpoints
+.temp/

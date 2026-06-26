@@ -1,0 +1,250 @@
+{
+  "communities": {
+    "0": [
+      "mcp_server_server_analyze_repository",
+      "mcp_server_server_ask_repository_question",
+      "mcp_server_server_explain_module",
+      "mcp_server_server_explain_project",
+      "mcp_server_server_generate_onboarding_plan",
+      "mcp_server_server_get_adapter",
+      "mcp_server_server_get_architecture",
+      "mcp_server_server_get_dependencies",
+      "mcp_server_server_list_modules",
+      "mcp_server_server_py_any",
+      "mcp_server_server_rationale_111",
+      "mcp_server_server_rationale_152",
+      "mcp_server_server_rationale_166",
+      "mcp_server_server_rationale_18",
+      "mcp_server_server_rationale_25",
+      "mcp_server_server_rationale_41",
+      "mcp_server_server_rationale_54",
+      "mcp_server_server_rationale_64",
+      "mcp_server_server_rationale_77",
+      "mcp_server_server_rationale_87",
+      "mcp_server_server_search_repository"
+    ],
+    "1": [
+      "graph_graph_generator",
+      "graph_graph_generator_graphgenerator_generate_dependency_graph",
+      "graph_graph_generator_graphgenerator_generate_mindmap",
+      "graph_graph_generator_graphgenerator_init",
+      "graph_graph_generator_rationale_78",
+      "graph_graph_generator_rationale_9",
+      "knowledge_graphify_adapter",
+      "knowledge_graphify_adapter_graphifyadapter",
+      "knowledge_graphify_adapter_graphifyadapter_init",
+      "knowledge_onboarding_plan",
+      "knowledge_qa_assistant",
+      "knowledge_repository_inventory",
+      "knowledge_repository_inventory_py_graphifyadapter",
+      "knowledge_repository_inventory_repositoryinventory_init",
+      "main",
+      "main_main",
+      "mcp_server_server",
+      "mcp_server_server_py_graphifyadapter",
+      "test_integration"
+    ],
+    "2": [
+      "knowledge_graphify_adapter_graphifyadapter_get_communities",
+      "knowledge_graphify_adapter_graphifyadapter_get_dependencies",
+      "knowledge_graphify_adapter_graphifyadapter_get_key_components",
+      "knowledge_graphify_adapter_graphifyadapter_get_modules",
+      "knowledge_graphify_adapter_graphifyadapter_get_project_summary",
+      "knowledge_graphify_adapter_py_any",
+      "knowledge_graphify_adapter_rationale_115",
+      "knowledge_graphify_adapter_rationale_161",
+      "knowledge_graphify_adapter_rationale_192",
+      "knowledge_graphify_adapter_rationale_236",
+      "knowledge_graphify_adapter_rationale_264",
+      "scanner_architecture_detector",
+      "scanner_architecture_detector_architecturedetector_detect",
+      "scanner_architecture_detector_architecturedetector_determine_architecture_type",
+      "scanner_architecture_detector_architecturedetector_init",
+      "scanner_architecture_detector_py_any",
+      "scanner_architecture_detector_rationale_10"
+    ],
+    "3": [
+      "knowledge_onboarding_plan_onboardingplangenerator",
+      "knowledge_onboarding_plan_onboardingplangenerator_format_community_list",
+      "knowledge_onboarding_plan_onboardingplangenerator_generate",
+      "knowledge_onboarding_plan_onboardingplangenerator_init",
+      "knowledge_onboarding_plan_py_any",
+      "knowledge_onboarding_plan_py_graphifyadapter",
+      "knowledge_onboarding_plan_rationale_11",
+      "mcp_server_server_get_learning_path",
+      "mcp_server_server_rationale_139"
+    ],
+    "4": [
+      "knowledge_qa_assistant_py_any",
+      "knowledge_qa_assistant_py_graphifyadapter",
+      "knowledge_qa_assistant_qaassistant",
+      "knowledge_qa_assistant_qaassistant_answer_question",
+      "knowledge_qa_assistant_qaassistant_explain_module",
+      "knowledge_qa_assistant_qaassistant_init",
+      "knowledge_qa_assistant_rationale_10",
+      "knowledge_qa_assistant_rationale_98"
+    ],
+    "5": [
+      "scanner_project_scanner",
+      "scanner_project_scanner_projectscanner_init",
+      "scanner_project_scanner_projectscanner_scan",
+      "scanner_project_scanner_py_any",
+      "scanner_project_scanner_rationale_10"
+    ],
+    "6": [
+      "knowledge_graphify_adapter_graphifyadapter_generate_graph",
+      "knowledge_graphify_adapter_graphifyadapter_load_graph",
+      "knowledge_graphify_adapter_rationale_25",
+      "knowledge_graphify_adapter_rationale_48"
+    ],
+    "7": [
+      "knowledge_repository_inventory_py_any",
+      "knowledge_repository_inventory_rationale_9",
+      "knowledge_repository_inventory_repositoryinventory_get_inventory"
+    ],
+    "8": [
+      "graph_graph_generator_graphgenerator_generate_call_flow",
+      "graph_graph_generator_rationale_42"
+    ],
+    "9": [
+      "graph_init"
+    ],
+    "10": [
+      "knowledge_init"
+    ],
+    "11": [
+      "mcp_server_init"
+    ],
+    "12": [
+      "scanner_init"
+    ]
+  },
+  "cohesion": {
+    "0": 0.13333333333333333,
+    "1": 0.2046783625730994,
+    "2": 0.14705882352941177,
+    "3": 0.2777777777777778,
+    "4": 0.32142857142857145,
+    "5": 0.4,
+    "6": 0.5,
+    "7": 0.6666666666666666,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0
+  },
+  "gods": [
+    {
+      "id": "knowledge_graphify_adapter_graphifyadapter",
+      "label": "GraphifyAdapter",
+      "degree": 27
+    },
+    {
+      "id": "mcp_server_server_py_any",
+      "label": "Any",
+      "degree": 15
+    },
+    {
+      "id": "mcp_server_server_get_adapter",
+      "label": "get_adapter()",
+      "degree": 14
+    },
+    {
+      "id": "knowledge_onboarding_plan_onboardingplangenerator",
+      "label": "OnboardingPlanGenerator",
+      "degree": 11
+    },
+    {
+      "id": "knowledge_qa_assistant_qaassistant",
+      "label": "QAAssistant",
+      "degree": 11
+    },
+    {
+      "id": "knowledge_graphify_adapter_py_any",
+      "label": "Any",
+      "degree": 6
+    },
+    {
+      "id": "mcp_server_server_py_graphifyadapter",
+      "label": "GraphifyAdapter",
+      "degree": 6
+    },
+    {
+      "id": "mcp_server_server_generate_onboarding_plan",
+      "label": "generate_onboarding_plan()",
+      "degree": 5
+    },
+    {
+      "id": "mcp_server_server_explain_module",
+      "label": "explain_module()",
+      "degree": 5
+    },
+    {
+      "id": "mcp_server_server_get_architecture",
+      "label": "get_architecture()",
+      "degree": 5
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Any",
+      "target": "GraphifyAdapter",
+      "source_files": [
+        "mcp_server/server.py",
+        "knowledge/graphify_adapter.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Any",
+      "target": "OnboardingPlanGenerator",
+      "source_files": [
+        "mcp_server/server.py",
+        "knowledge/onboarding_plan.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "GraphifyAdapter",
+      "target": "OnboardingPlanGenerator",
+      "source_files": [
+        "mcp_server/server.py",
+        "knowledge/onboarding_plan.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Any",
+      "target": "QAAssistant",
+      "source_files": [
+        "mcp_server/server.py",
+        "knowledge/qa_assistant.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "GraphifyAdapter",
+      "target": "QAAssistant",
+      "source_files": [
+        "mcp_server/server.py",
+        "knowledge/qa_assistant.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

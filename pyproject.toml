@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onboardai"
+version = "0.1.6"
+authors = [
+    { name = "ROHIT ANISH", email = "rohit.anish2025@vitstudent.ac.in" }
+]
+description = "An AI-powered onboarding intelligence layer on top of Graphify for MCP"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn>=0.20.0",
+    "mcp>=1.0.0",
+    "networkx>=3.0",
+    "pydantic>=2.0",
+]
+
+[project.scripts]
+onboardai = "main:main"
+
+[tool.setuptools]
+packages = ["scanner", "knowledge", "graph", "mcp_server"]
+py-modules = ["main"]

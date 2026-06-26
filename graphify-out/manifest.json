@@ -1,0 +1,72 @@
+{
+  "graph/__init__.py": {
+    "mtime": 1781448506.563702,
+    "ast_hash": "a13d21d4cb550b2aa9613030c441c52c",
+    "semantic_hash": "a13d21d4cb550b2aa9613030c441c52c"
+  },
+  "graph/graph_generator.py": {
+    "mtime": 1781448503.1500995,
+    "ast_hash": "1096ed2ef615c7a0351a3f4995cf2ccc",
+    "semantic_hash": "1096ed2ef615c7a0351a3f4995cf2ccc"
+  },
+  "knowledge/__init__.py": {
+    "mtime": 1781448477.3667002,
+    "ast_hash": "32a4ad9a896df2301c79c31881322107",
+    "semantic_hash": "32a4ad9a896df2301c79c31881322107"
+  },
+  "knowledge/graphify_adapter.py": {
+    "mtime": 1781448474.496493,
+    "ast_hash": "f6e410024e5fbf5d3d29fdb10ad9fa1f",
+    "semantic_hash": "f6e410024e5fbf5d3d29fdb10ad9fa1f"
+  },
+  "knowledge/onboarding_plan.py": {
+    "mtime": 1781448497.3693292,
+    "ast_hash": "1f50428dd3533dca3dfd7a00dcad155e",
+    "semantic_hash": "1f50428dd3533dca3dfd7a00dcad155e"
+  },
+  "knowledge/qa_assistant.py": {
+    "mtime": 1781448517.6774423,
+    "ast_hash": "190f2df910f04519e85ab56bebb1207e",
+    "semantic_hash": "190f2df910f04519e85ab56bebb1207e"
+  },
+  "knowledge/repository_inventory.py": {
+    "mtime": 1781448481.3513718,
+    "ast_hash": "4e502b919e58793c1391bf70918dd706",
+    "semantic_hash": "4e502b919e58793c1391bf70918dd706"
+  },
+  "main.py": {
+    "mtime": 1781448615.966496,
+    "ast_hash": "315f775dae7e4757192cedccb44d8f27",
+    "semantic_hash": "315f775dae7e4757192cedccb44d8f27"
+  },
+  "mcp_server/__init__.py": {
+    "mtime": 1781448559.0966709,
+    "ast_hash": "5c78d3997fb80750248eeda0710da100",
+    "semantic_hash": "5c78d3997fb80750248eeda0710da100"
+  },
+  "mcp_server/server.py": {
+    "mtime": 1781448556.2211833,
+    "ast_hash": "a78c5d6f864fc9606424ec501d11b7d6",
+    "semantic_hash": "a78c5d6f864fc9606424ec501d11b7d6"
+  },
+  "scanner/__init__.py": {
+    "mtime": 1781448462.4507747,
+    "ast_hash": "76b2c2e04c8187a9da41ad4eba8b6934",
+    "semantic_hash": "76b2c2e04c8187a9da41ad4eba8b6934"
+  },
+  "scanner/architecture_detector.py": {
+    "mtime": 1781448460.3609104,
+    "ast_hash": "d4d20db06eb2dc335a244fefb783e174",
+    "semantic_hash": "d4d20db06eb2dc335a244fefb783e174"
+  },
+  "scanner/project_scanner.py": {
+    "mtime": 1781448455.2577946,
+    "ast_hash": "c6e4d30f8d1d63fdedf9514807a633c7",
+    "semantic_hash": "c6e4d30f8d1d63fdedf9514807a633c7"
+  },
+  "test_integration.py": {
+    "mtime": 1781448621.0819695,
+    "ast_hash": "db230fec29615a06e6f8db99d86defda",
+    "semantic_hash": "db230fec29615a06e6f8db99d86defda"
+  }
+}

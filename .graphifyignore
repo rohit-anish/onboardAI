@@ -1,0 +1,6 @@
+requirements.txt
+*.md
+.gemini/
+.git/
+.vscode/
+.idea/

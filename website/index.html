@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnboardAI - AI-Powered Codebase Onboarding Intelligence</title>
+    <meta name="description" content="Accelerate developer ramp-up from weeks to hours. OnboardAI transforms Graphify repository graphs into interactive, day-by-day onboarding roadmaps and context-aware Q&A.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#" class="logo-link">
+                    <img src="assets/OnboardAI_logo_transparent.png" alt="OnboardAI" class="logo-image">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="#install" class="nav-link">Install</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="#install" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg-gradient"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">v0.1.4 Live on PyPI</div>
+                <h1 class="hero-title">Developer Onboarding <span class="text-gradient"> Accelerated! </span></h1>
+                <p class="hero-subtitle">Transform repository knowledge graphs into day-by-day learning paths, call-flow mindmaps, and task-specific developer guidance. Integrates seamlessly with Claude Code through MCP.</p>
+                <div class="hero-actions">
+                    <a href="#install" class="btn btn-gradient">Quick Install</a>
+                    <a href="https://pypi.org/project/onboardai/" target="_blank" class="btn btn-secondary">
+                        <span>📦 View PyPI Package</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="terminal-title">powershell - OnboardAI Client</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line"><span class="prompt">PS C:\></span> pip install onboardai</div>
+                    <div class="terminal-line success">Successfully installed onboardai-0.1.0</div>
+                    <div class="terminal-line"><span class="prompt">PS C:\></span> onboardai --mode stdio</div>
+                    <div class="terminal-line info">Starting OnboardAI MCP Server in STDIO mode...</div>
+                    <div class="terminal-line"><span class="prompt">PS C:\></span> claude</div>
+                    <div class="terminal-line prompt-claude">Claude > How should I learn this project?</div>
+                    <div class="terminal-line prompt-claude">{...Claude's Response...}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is OnboardAI Section -->
+    <section id="what-is-onboardai" class="section intro-section">
+        <div class="container">
+            <div class="grid grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 64px; align-items: center;">
+                <div class="intro-content">
+                    <div class="badge" style="background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.25);">Introduction</div>
+                    <h2 class="section-title" style="text-align: left; font-size: 2.5rem; margin-bottom: 24px; letter-spacing: -0.02em;">What is OnboardAI?</h2>
+                    <p class="intro-text" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8;">
+                        OnboardAI is a developer onboarding intelligence system designed to dramatically shorten developer ramp-up times. Instead of forcing new hires or interns to read through thousands of lines of code, OnboardAI acts as a <strong>translation layer between raw repository structures and human learning pathways</strong>.
+                    </p>
+                    <p class="intro-text" style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8;">
+                        By integrating with <strong>Claude Code</strong> via the Model Context Protocol (MCP) and using <strong>Graphify</strong> as its source of truth, it automatically turns codebase relationship graphs into day-by-day roadmaps, visual call-flows, and personalized work instructions.
+                    </p>
+                </div>
+                <div class="intro-highlights" style="display: flex; flex-direction: column; gap: 24px;">
+                    <div class="highlight-item" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 12px; border-left: 4px solid var(--primary);">
+                        <h4 style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 8px;">1. Connects to Claude Code</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Integrates directly as a local MCP server, allowing developers to query repository details seamlessly inside their AI chats.</p>
+                    </div>
+                    <div class="highlight-item" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 12px; border-left: 4px solid var(--secondary);">
+                        <h4 style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 8px;">2. Leverages Graphify Graphs</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Uses code abstract syntax trees (ASTs) and connectivity indexes as the base source of codebase truth.</p>
+                    </div>
+                    <div class="highlight-item" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 12px; border-left: 4px solid #38bdf8;">
+                        <h4 style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 8px;">3. Runs Entirely Offline</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Processes all directory scans, graphs, and roadmaps locally on your development machine. No cloud dependencies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Onboarding Capabilities</h2>
+                <p class="section-desc">Explore the built-in intelligence features packed into our MCP server.</p>
+            </div>
+            
+            <div class="features-wrapper">
+                <!-- Feature Card 1 -->
+                <div class="feature-row">
+                    <div class="feature-info">
+                        <h3 class="feature-row-title">Day-by-Day Learning Roadmap</h3>
+                        <p class="feature-row-text">Auto-generates structured 5-day studies. Uses Graphify communities and coupling weight analysis to order modules from simple utility layers to entry points. Fully tailorable by developer role.</p>
+                        <ul class="feature-list">
+                            <li>Foundational modules prioritized on Days 2-3</li>
+                            <li>Controller & router entry points mapped to Day 4</li>
+                            <li>Personalized filters by team or assigned module</li>
+                        </ul>
+                    </div>
+                    <div class="feature-preview">
+                        <pre><code class="language-json">
+{
+  "day": 2,
+  "theme": "Foundational Layers",
+  "details": "- Community 2 (database schema & adapters)\n- Community 6 (util methods)"
+}
+                        </code></pre>
+                    </div>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="feature-row reverse">
+                    <div class="feature-info">
+                        <h3 class="feature-row-title">Task-Specific Q&A Assistant</h3>
+                        <p class="feature-row-text">Ask repository Q&A queries inside Claude and supply the specific issue description. The assistant traverses the graph and maps coordinates for your changes.</p>
+                        <ul class="feature-list">
+                            <li>Graph path-finding identifies core components</li>
+                            <li>Highlights immediate action steps and file paths</li>
+                            <li>Pinpoints exact class and method responsibilities</li>
+                        </ul>
+                    </div>
+                    <div class="feature-preview">
+                        <div class="chat-mockup">
+                            <div class="chat-message user">"Explain how the scanner works. I need to add file size caps."</div>
+                            <div class="chat-message bot">
+                                <strong>Scanner Module (ProjectScanner)</strong><br>
+                                Located in `scanner/project_scanner.py`. Handles directory crawls.<br><br>
+                                <strong>🎯 Instructions for task "file size caps"</strong>:<br>
+                                1. Open `scanner/project_scanner.py`<br>
+                                2. Add validation inside the `scan()` loop.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="feature-row">
+                    <div class="feature-info">
+                        <h3 class="feature-row-title">Dependency & Mindmap Visualizer</h3>
+                        <p class="feature-row-text">Instantly generates clean Mermaid diagrams representing your code structure. You can view structural mindmaps, dependency flows, or class-to-class call pathways.</p>
+                        <ul class="feature-list">
+                            <li>Mermaid Mindmaps for folder structures</li>
+                            <li>Call-flow charts for runtime pathway mapping</li>
+                            <li>Import diagrams indicating module couplings</li>
+                        </ul>
+                    </div>
+                    <div class="feature-preview">
+                        <pre><code class="language-mermaid">
+mindmap
+  root((OnboardAI))
+    graph
+      graph_generator
+    knowledge
+      graphify_adapter
+      onboarding_plan
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infographic Show -->
+    <section id="architecture" class="section architecture-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Architecture & System Workflow</h2>
+                <p class="section-desc">OnboardAI leverages Graphify output (code AST + analysis data) as its source of truth, loading data into a NetworkX graph structure to generate developer guidance.</p>
+            </div>
+            <div class="infographic-container">
+                <img src="assets/onboard_ai_infographic.webp" alt="OnboardAI Workflow & Features" class="infographic-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Install / Run -->
+    <section id="install" class="section install-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Install & Run Reference</h2>
+                <p class="section-desc">Get OnboardAI running locally on your project in less than a minute.</p>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="tab-pip">1. Install Package</button>
+                    <button class="tab-btn" data-tab="tab-mcp">2. Claude MCP Link</button>
+                    <button class="tab-btn" data-tab="tab-test">3. Local Verification</button>
+                </div>
+                <div class="tabs-content">
+                    <div id="tab-pip" class="tab-pane active">
+                        <p class="tab-pane-title">Install OnboardAI and its CLI command from PyPI:</p>
+                        <pre><code>pip install onboardai</code></pre>
+                        <p class="tab-pane-info">This installs the Python MCP SDK, networkx, and the global command shortcut <code>onboardai</code>.</p>
+                    </div>
+                    <div id="tab-mcp" class="tab-pane">
+                        <p class="tab-pane-title">Link the MCP server to the Claude Code CLI:</p>
+                        <pre><code>claude mcp add onboard-ai onboardai</code></pre>
+                        <p class="tab-pane-info">Claude will automatically detect the executable shortcut and launch the server whenever it needs repository details.</p>
+                    </div>
+                    <div id="tab-test" class="tab-pane">
+                        <p class="tab-pane-title">No subscription? Run a local client simulation session:</p>
+                        <pre><code>$env:PYTHONIOENCODING="utf-8"
+python test_client.py</code></pre>
+                        <p class="tab-pane-info">This script initializes the server locally, queries and prints tool lists, and displays roadmap output without needing cloud connections.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Value Proposition -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Onboarding Intelligence Layer</h2>
+                <p class="section-desc">Traditional repositories have dependency charts but lack onboarding flow. OnboardAI bridges this gap, translating raw relationships into developer roadmaps.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card val-card">
+                    <div class="card-icon">🧠</div>
+                    <h3 class="card-title">Cognitive Load Reduction</h3>
+                    <p class="card-text">New developers don't need to read thousands of lines of code. OnboardAI surfaces the critical core abstractions (hubs) first.</p>
+                </div>
+                <div class="card val-card">
+                    <div class="card-icon">🚀</div>
+                    <h3 class="card-title">Topological Roadmap</h3>
+                    <p class="card-text">Modules are organized sequentially based on actual imports, ensuring developers learn baseline layers before logic controllers.</p>
+                </div>
+                <div class="card val-card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Contextual Guidance</h3>
+                    <p class="card-text">Provide the feature task you're assigned, and OnboardAI immediately highlights the specific methods and files you should read.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section id="faq" class="section faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-desc">Got questions about privacy, LLM requirements, or local setups?</p>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Does OnboardAI require an LLM API Key?</span>
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>No! For code-only codebases, Graphify runs its full AST parsing locally and writes files without needing an LLM key. OnboardAI then loads those local files and processes all connectivity logic offline.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Is my company's codebase safe?</span>
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Yes. OnboardAI is completely local-first. All parsing, graph traversal, and community sorting happen directly on your local developer machine. No codebase data is sent to external clouds.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>How is OnboardAI different from Graphify?</span>
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Graphify generates the raw data graphs of your repository. OnboardAI sits on top of that graph as an intelligence layer, generating structured learning paths, answering onboarding Q&A, and providing task-specific developer instructions.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Which MCP clients are supported?</span>
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Any standard MCP client is supported! This includes Claude Code CLI, Claude Desktop App, Cursor, VS Code (via Copilot Chat), and other custom coding agents.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo-link footer-logo-link">
+                    <img src="assets/OnboardAI_logo_transparent.png" alt="OnboardAI" class="logo-image footer-logo-image">
+                </a>
+            </div>
+            <p class="copyright">&copy; 2026 OnboardAI.</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
